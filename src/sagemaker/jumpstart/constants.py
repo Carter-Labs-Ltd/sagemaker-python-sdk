@@ -230,16 +230,7 @@ JUMPSTART_LOGGER.addHandler(
     )()
 )
 
-try:
-    DEFAULT_JUMPSTART_SAGEMAKER_SESSION = Session(
-        boto3.Session(region_name=JUMPSTART_DEFAULT_REGION_NAME)
-    )
-except Exception as e:  # pylint: disable=W0703
-    DEFAULT_JUMPSTART_SAGEMAKER_SESSION = None
-    JUMPSTART_LOGGER.warning(
-        "Unable to create default JumpStart SageMaker Session due to the following error: %s.",
-        str(e),
-    )
+DEFAULT_JUMPSTART_SAGEMAKER_SESSION = None
 
 EXTRA_MODEL_ID_TAGS = ["sm-jumpstart-id", "sagemaker-studio:jumpstart-model-id"]
 EXTRA_MODEL_VERSION_TAGS = [
